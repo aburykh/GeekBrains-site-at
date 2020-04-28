@@ -1,0 +1,9 @@
+[0411/051849.400:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0414/150719.879:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0415/002136.896:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0418/092236.647:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0418/095033.610:ERROR:file_io.cc(134)] WriteFile: Идет закрытие канала. (0xE8)
+[0418/190326.248:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0418/190349.194:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0419/170211.619:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0422/015110.322:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
