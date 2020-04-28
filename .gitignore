@@ -1,0 +1,8 @@
+# Default ignored files
+.idea/
+.allure/
+target/
+build/
+out/
+*.iml
+.log
