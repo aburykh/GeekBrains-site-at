@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import ru.geekbrains.main.site.at.BasePage;
-import ru.geekbrains.main.site.at.CoursePage;
-import ru.geekbrains.main.site.at.HomePage;
+import ru.geekbrains.main.site.at.page.content.CoursePage;
+import ru.geekbrains.main.site.at.page.content.HomePage;
+import ru.geekbrains.main.site.at.page.content.base.BasePage;
 
 public class Navigation {
 

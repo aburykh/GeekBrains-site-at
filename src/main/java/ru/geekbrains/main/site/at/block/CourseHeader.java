@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import ru.geekbrains.main.site.at.CoursePage;
+import ru.geekbrains.main.site.at.page.content.CoursePage;
 
 public class CourseHeader {
 

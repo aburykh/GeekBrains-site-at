@@ -1,22 +1,26 @@
-package ru.geekbrains.main.site.at;
+package ru.geekbrains.main.site.at.block;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import ru.geekbrains.main.site.at.block.Navigation;
+import ru.geekbrains.main.site.at.page.BasePageObject;
+import ru.geekbrains.main.site.at.page.content.SearchPage;
+import ru.geekbrains.main.site.at.page.content.base.BasePage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalToCompressingWhiteSpace;
 
 
-public class Header {
+public class Header extends BasePageObject {
 
     private Navigation navigation;
 
     public Header(WebDriver driver) {
-        navigation = PageFactory.initElements(driver, Navigation.class);
+        super(driver);
+        //navigation = PageFactory.initElements(driver, Navigation.class);
+        PageFactory.initElements(driver, this);
 
     }
 
@@ -51,6 +55,11 @@ public class Header {
 
         String registerInHeaderText = checkRegisterInHeader.getText();
         assertThat(registerInHeaderText, equalToCompressingWhiteSpace("Регистрация"));
+    }
 
+    @Step("Нажать кнопку поиска в секции header")
+    public SearchPage clickSearch() {
+        searchIcon.click();
+        return BasePage.getSearch();
     }
 }

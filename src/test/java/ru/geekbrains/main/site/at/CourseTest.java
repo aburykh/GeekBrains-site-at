@@ -5,8 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
-import org.openqa.selenium.support.PageFactory;
 import ru.geekbrains.main.site.at.base.BaseTest;
+import ru.geekbrains.main.site.at.page.content.CoursePage;
+import ru.geekbrains.main.site.at.page.sign.AuthorizationPage;
 
 
 @Execution(ExecutionMode.CONCURRENT)
@@ -27,7 +28,7 @@ public class CourseTest extends BaseTest {
         driver.get("https://geekbrains.ru/login");
 
         ((CoursePage)
-                PageFactory.initElements(driver, AuthorizationPage.class)
+                new AuthorizationPage(driver)
                         .authorization(login, password)
                         .checkNamePage("Главная")
                         .getNavigation()
@@ -36,6 +37,6 @@ public class CourseTest extends BaseTest {
                 .getCourseHeader().clickButton("Курсы")
                 .configFilter("Бесплатные", "Тестирование")
                 .checkingDisplayedCourses("Тестирование ПО. Уровень 1", "Тестирование ПО. Уровень 2");
-
     }
+
 }

@@ -1,18 +1,20 @@
-package ru.geekbrains.main.site.at;
+package ru.geekbrains.main.site.at.block;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import ru.geekbrains.main.site.at.block.Navigation;
+import org.openqa.selenium.support.PageFactory;
+import ru.geekbrains.main.site.at.page.BasePageObject;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalToCompressingWhiteSpace;
 
-public class Footer extends Page {
+public class Footer extends BasePageObject {
 
     public Footer(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     private Navigation navigation;

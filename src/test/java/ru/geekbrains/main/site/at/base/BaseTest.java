@@ -11,12 +11,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+public abstract class BaseTest {
     protected WebDriver driver;
 
     @BeforeEach
     @Step("Запуск браузера с выставленными параметрами")
-    protected void setUp() {
+    void setUp() {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();

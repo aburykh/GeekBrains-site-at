@@ -1,4 +1,4 @@
-package ru.geekbrains.main.site.at;
+package ru.geekbrains.main.site.at.block;
 
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
@@ -9,20 +9,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.geekbrains.main.site.at.page.BasePageObject;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-public class SearchPage {
+public class SearchTabsBlock extends BasePageObject {
 
-    public SearchPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    protected WebDriver driver;
 
     @FindBy(css = "[id=\"top-menu\"] [class=\"show-search-form\"] svg")
-    private WebElement buttonSearch;
+    public WebElement buttonSearch;
 
     @FindBy(css = "input[class=\"search-panel__search-field\"]")
     private WebElement inputSearch;
@@ -74,24 +70,30 @@ public class SearchPage {
     @FindBy(css = "h3 [href=\"/career/682\"]")
     private WebElement textGB;
 
+    public SearchTabsBlock(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
+
 
     @Step("Проверка нажатия на иконку поиска")
-    public SearchPage clickSearch() {
-        new WebDriverWait(driver, 30)
+    public SearchTabsBlock clickSearch() {
+        new WebDriverWait(this.driver, 30)
                 .until(ExpectedConditions.elementToBeClickable(buttonSearch));
         buttonSearch.click();
-        return PageFactory.initElements(driver, SearchPage.class);
+
+        return PageFactory.initElements(this.driver, SearchTabsBlock.class);
     }
 
     @Step("Ввод в строку поиска ключевого слова \"java\"")
-    public SearchPage inputSearch() {
+    public SearchTabsBlock inputSearch() {
         WebElement inputSearch = driver.findElement(By.cssSelector("input[class=\"search-panel__search-field\"]"));
         inputSearch.sendKeys("java");
-        return PageFactory.initElements(driver, SearchPage.class);
+        return PageFactory.initElements(this.driver, SearchTabsBlock.class);
     }
 
     @Step("Проверка отображения блока \"Профессии\" и проверка количественного показателя (>= 2)")
-    public SearchPage checkProfession() {
+    public SearchTabsBlock checkProfession() {
         new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.textToBePresentInElement(textProfession, "Профессии"));
         String textBlock = textProfession.getText();
@@ -106,7 +108,7 @@ public class SearchPage {
     }
 
     @Step("Проверка отображения блока \"Курсы\" и проверка количественного показателя (> 15)")
-    public SearchPage checkCourses() {
+    public SearchTabsBlock checkCourses() {
         new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.textToBePresentInElement(textCourses, "Курсы"));
         String textBlock = textCourses.getText();
@@ -121,7 +123,7 @@ public class SearchPage {
     }
 
     @Step("Проверка отображения блока \"Вебинары\" и проверка количественного показателя (> 180 && < 300)")
-    public SearchPage checkWebinars() {
+    public SearchTabsBlock checkWebinars() {
         new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.textToBePresentInElement(textWebinars, "Вебинары"));
         String textBlock = textWebinars.getText();
@@ -136,7 +138,7 @@ public class SearchPage {
     }
 
     @Step("Проверка отображения блока \"Блоги\" и проверка количественного показателя (> 300)")
-    public SearchPage checkBlogs() {
+    public SearchTabsBlock checkBlogs() {
         new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.textToBePresentInElement(textBlogs, "Блоги"));
         String textBlock = textBlogs.getText();
@@ -151,7 +153,7 @@ public class SearchPage {
     }
 
     @Step("Проверка отображения блока \"Форум\" и проверка количественного показателя (!= 350)")
-    public SearchPage checkForum() {
+    public SearchTabsBlock checkForum() {
         new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.textToBePresentInElement(textForum, "Форум"));
         String textBlock = textForum.getText();
@@ -166,7 +168,7 @@ public class SearchPage {
     }
 
     @Step("Проверка отображения блока \"Тесты\" и проверка количественного показателя (!= 0)")
-    public SearchPage checkTests() {
+    public SearchTabsBlock checkTests() {
         new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.textToBePresentInElement(textTests, "Тесты"));
         String textBlock = textTests.getText();
@@ -200,6 +202,6 @@ public class SearchPage {
         ));
 
         logoGB.click();
-
     }
+
 }

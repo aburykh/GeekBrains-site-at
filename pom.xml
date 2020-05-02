@@ -19,7 +19,7 @@
         <allure-maven.version>2.10.0</allure-maven.version>
         <reportVersion.version>2.13.3</reportVersion.version>
         <!--dependencies versions-->
-        <selenium-java.version>4.0.0-alpha-5</selenium-java.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
         <junit-jupiter.version>5.6.1</junit-jupiter.version>
         <junit-jupiter-api.version>5.6.1</junit-jupiter-api.version>
         <annotations-java5.version>19.0.0</annotations-java5.version>

@@ -9,8 +9,10 @@ import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.openqa.selenium.support.PageFactory;
 import ru.geekbrains.main.site.at.base.BaseTest;
+import ru.geekbrains.main.site.at.block.Footer;
+import ru.geekbrains.main.site.at.block.Header;
+import ru.geekbrains.main.site.at.page.content.HomePage;
 
 import java.util.stream.Stream;
 
@@ -35,15 +37,15 @@ public class NavigationTest extends BaseTest {
     void checkNavigation(String namePage) throws InterruptedException {
         driver.get("https://geekbrains.ru/career");
 
-        PageFactory.initElements(driver, HomePage.class)
+        new HomePage(driver)
                 .getNavigation().clickButton(namePage)
                 .checkNamePage(namePage);
 
-        PageFactory.initElements(driver, Header.class)
+        new Header(driver)
                 .checkElementsInHeader();
 
-        PageFactory.initElements(driver, Footer.class)
+        new Footer(driver)
                 .checkElementsInFooter();
-
     }
+
 }
